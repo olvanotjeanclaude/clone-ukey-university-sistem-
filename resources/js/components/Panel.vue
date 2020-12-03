@@ -1,5 +1,5 @@
 <template>
-    <div class="container my-3">
+    <div class="container my-3 d-none">
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="card">
@@ -30,13 +30,13 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Toplantılar</h5>
+                                <h5>Meeeting</h5>
                             </div>
                             <div class="card-body">
-                                <p>Devam eden toplantınız bulunmamaktadır.</p>
+                                <p>You do not have an ongoing meeting.</p>
                             </div>
                             <div class="card-footer">
-                                <p>Daha fazla...</p>
+                                <p>More...</p>
                             </div>
                         </div>
                     </div>

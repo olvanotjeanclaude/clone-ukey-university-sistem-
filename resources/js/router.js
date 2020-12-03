@@ -5,10 +5,11 @@ Vue.use(VueRouter);
 
 import ExempleComponent from "./components/ExampleComponent.vue";
 import Panel from "./components/Panel.vue"
-
+import LessonInformation from "./components/LessonInformation.vue"
 const routes = [
     { path: "/", component: Panel },
-    { path: "/test", component: ExempleComponent }
+    { path: "/test", component: ExempleComponent },
+    { path: "/ders-bilgileri", component: LessonInformation }
 ];
 
 const router = new VueRouter({
