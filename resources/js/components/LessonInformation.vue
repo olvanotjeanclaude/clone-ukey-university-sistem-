@@ -1,16 +1,25 @@
 <template>
-    <div class="card information my-4 mx-3 rounded">
+    <div class="card information my-1 mx-3 rounded">
         <h5 class="card-header text-muted text-capitalize">
-            Basic Information of the Course.
+            Basic Information of the Course
         </h5>
-
+        <div class="information-item">
+            <div class="field-display">
+                <div class="field-display-title px-3">
+                    <span>Teacher</span>
+                </div>
+                <div class="field-display-value">
+                    <p class=" my-auto text-uppercase">John Mathiew</p>
+                </div>
+            </div>
+        </div>
         <div class="information-item">
             <div class="field-display">
                 <div class="field-display-title px-3">
                     <span>Course name</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">BİLİŞİM SİSTEMLERİ DONANIMI</p>
+                    <p class=" my-auto">INFORMATION SYSTEMS HARDWARE</p>
                 </div>
             </div>
         </div>
@@ -142,9 +151,13 @@ export default {
 }
 .field-display-title {
     width: 25%;
-    font-weight: 500;
-    font-size: 1rem;
+    font-weight: 630;
+    font-size: 0.95rem;
     text-transform: capitalize;
+}
+.field-display-title,
+.field-display-value {
+    padding: 2px 1px;
 }
 .field-display-value {
     width: 75%;

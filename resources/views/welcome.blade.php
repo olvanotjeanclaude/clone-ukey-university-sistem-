@@ -23,7 +23,7 @@
 
     .sidebar {
         width: 25%;
-        height: 100vh;
+        min-height: 100vh;
         border-right: 1px solid lightgray;
     }
 

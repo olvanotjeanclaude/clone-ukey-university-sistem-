@@ -1,5 +1,5 @@
 <template>
-    <div class="container my-3 d-none">
+    <div class="container my-3">
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="card">

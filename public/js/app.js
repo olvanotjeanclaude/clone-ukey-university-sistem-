@@ -2064,6 +2064,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {};
@@ -6719,7 +6728,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.information[data-v-4087bff9] {\r\n    border-top: 2px solid #00c0ef;\r\n    border-left: 1px solid lightgray;\r\n    border-right: 1px solid lightgray;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display[data-v-4087bff9] {\r\n    display: flex;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display-title[data-v-4087bff9] {\r\n    width: 25%;\r\n    font-weight: 500;\r\n    font-size: 1rem;\r\n    text-transform: capitalize;\n}\n.field-display-value[data-v-4087bff9] {\r\n    width: 75%;\r\n    font-size: 0.8rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.information[data-v-4087bff9] {\r\n    border-top: 2px solid #00c0ef;\r\n    border-left: 1px solid lightgray;\r\n    border-right: 1px solid lightgray;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display[data-v-4087bff9] {\r\n    display: flex;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display-title[data-v-4087bff9] {\r\n    width: 25%;\r\n    font-weight: 630;\r\n    font-size: 0.95rem;\r\n    text-transform: capitalize;\n}\n.field-display-title[data-v-4087bff9],\r\n.field-display-value[data-v-4087bff9] {\r\n    padding: 2px 1px;\n}\n.field-display-value[data-v-4087bff9] {\r\n    width: 75%;\r\n    font-size: 0.8rem;\n}\r\n", ""]);
 
 // exports
 
@@ -38659,22 +38668,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card information my-4 mx-3 rounded" }, [
+  return _c("div", { staticClass: "card information my-1 mx-3 rounded" }, [
     _c("h5", { staticClass: "card-header text-muted text-capitalize" }, [
-      _vm._v("\n        Basic Information of the Course.\n    ")
+      _vm._v("\n        Basic Information of the Course\n    ")
     ]),
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "information-item" }, [
-      _c("div", { staticClass: "field-display" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
-        ])
-      ])
-    ]),
+    _vm._m(1),
     _vm._v(" "),
     _c("div", { staticClass: "information-item" }, [
       _c("div", { staticClass: "field-display" }, [
@@ -38701,7 +38702,7 @@ var render = function() {
         _vm._m(4),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(5))])
+          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
         ])
       ])
     ]),
@@ -38711,7 +38712,7 @@ var render = function() {
         _vm._m(5),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
+          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(5))])
         ])
       ])
     ]),
@@ -38721,19 +38722,47 @@ var render = function() {
         _vm._m(6),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
+          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "information-item" }, [
+      _c("div", { staticClass: "field-display" }, [
+        _vm._m(7),
+        _vm._v(" "),
+        _c("div", { staticClass: "field-display-value" }, [
           _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(3))])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(7),
-    _vm._v(" "),
     _vm._m(8),
     _vm._v(" "),
-    _vm._m(9)
+    _vm._m(9),
+    _vm._v(" "),
+    _vm._m(10)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "information-item" }, [
+      _c("div", { staticClass: "field-display" }, [
+        _c("div", { staticClass: "field-display-title px-3" }, [
+          _c("span", [_vm._v("Teacher")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "field-display-value" }, [
+          _c("p", { staticClass: " my-auto text-uppercase" }, [
+            _vm._v("John Mathiew")
+          ])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38746,7 +38775,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
           _c("p", { staticClass: " my-auto" }, [
-            _vm._v("BİLİŞİM SİSTEMLERİ DONANIMI")
+            _vm._v("INFORMATION SYSTEMS HARDWARE")
           ])
         ])
       ])
@@ -38886,7 +38915,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container my-3 d-none" }, [
+  return _c("div", { staticClass: "container my-3" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12 col-lg-6" }, [
         _c("div", { staticClass: "card" }, [
