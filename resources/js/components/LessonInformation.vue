@@ -19,7 +19,7 @@
                     <span>Course name</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">INFORMATION SYSTEMS HARDWARE</p>
+                    <p class=" my-auto">{{ detail.name }}</p>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                     <span>Course code</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">{{ 4 }}</p>
+                    <p class=" my-auto">{{ detail.code }}</p>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                     <span>Ects</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">{{ 4 }}</p>
+                    <p class=" my-auto">{{ detail.ects }}</p>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     <span>Akts</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">{{ 4 }}</p>
+                    <p class=" my-auto">{{ detail.akts }}</p>
                 </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
                     <span>Theory</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">{{ 5 }}</p>
+                    <p class=" my-auto">{{ detail.theory }}</p>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
                     <span>Application</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">{{ 4 }}</p>
+                    <p class=" my-auto">{{ detail.application }}</p>
                 </div>
             </div>
         </div>
@@ -79,7 +79,7 @@
                     <span>Lab</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">{{ 3 }}</p>
+                    <p class=" my-auto">{{ detail.laboratory }}</p>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                     <span>Credit</span>
                 </div>
                 <div class="field-display-value">
-                    <p class=" my-auto">4</p>
+                    <p class=" my-auto">{{ detail.credit }}</p>
                 </div>
             </div>
         </div>
@@ -100,11 +100,7 @@
                 </div>
                 <div class="field-display-value">
                     <p class="m-auto">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Obcaecati exercitationem a veritatis minima. Minus
-                        molestiae corrupti dolorum! Officiis velit fugit
-                        cupiditate eos culpa dolore blanditiis nisi, tenetur
-                        illum rerum? Quia.
+                        {{ detail.purpose }}
                     </p>
                 </div>
             </div>
@@ -115,15 +111,7 @@
                     <span>Course Resources</span>
                 </div>
                 <div class="field-display-value">
-                    <p class="my-auto">
-                        - Pala, Z. Bilgisayar Donanımı, Türkmen Kitapevi, 2005
-                        İstanbul.
-                    </p>
-                    <p class="my-auto">
-                        - Pusula Yayıncılık, Bilgisayar Donanımı Kitabı pdf
-                        (Public)
-                    </p>
-                    <p class="my-auto">- www.cizgi-tagem.org</p>
+                    <p class="my-auto">{{ detail.resource }}</p>
                 </div>
             </div>
         </div>
@@ -133,7 +121,20 @@
 <script>
 export default {
     data() {
-        return {};
+        return {
+            lessonId: this.$route.params.lessonId,
+            detail: []
+        };
+    },
+    created() {
+        let uri = "http://localhost:8000";
+        axios
+            .get(uri + "/api/lesson/" + this.lessonId)
+            .then(response => {
+                this.detail = response.data;
+                console.log(this.detail);
+            })
+            .catch(e => this.errors.push(e));
     }
 };
 </script>
@@ -157,10 +158,10 @@ export default {
 }
 .field-display-title,
 .field-display-value {
-    padding: 2px 1px;
+    padding: 3px 1px;
 }
 .field-display-value {
     width: 75%;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 </style>

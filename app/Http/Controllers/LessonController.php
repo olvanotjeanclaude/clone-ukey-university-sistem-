@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lesson;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -13,7 +14,9 @@ class LessonController extends Controller
      */
     public function index()
     {
-        //
+        $lessons = Lesson::all();
+
+        return response()->json($lessons);
     }
 
     /**
@@ -23,7 +26,6 @@ class LessonController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -45,7 +47,8 @@ class LessonController extends Controller
      */
     public function show($id)
     {
-        //
+        $lesson = Lesson::findOrFail($id);
+        return response()->json($lesson);
     }
 
     /**

@@ -1926,7 +1926,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   }
 });
 
@@ -2061,21 +2061,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      lessonId: this.$route.params.lessonId,
+      detail: []
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    var uri = "http://localhost:8000";
+    axios.get(uri + "/api/lesson/" + this.lessonId).then(function (response) {
+      _this.detail = response.data;
+      console.log(_this.detail);
+    })["catch"](function (e) {
+      return _this.errors.push(e);
+    });
   }
 });
 
@@ -2164,23 +2166,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      lessons: ["BIL0003 - EĞİTİMDE YAPAY ZEKA UYGULAMALARI", "BİLİŞİM SİSTEMLERİ DONANIMI", "TEMEL PROGRAMLAMA", "EĞİTİMDE GRAFİK VE CANLANDIRMA", "ÖĞRETİM TASARIMI", "WEB TABANLI PROGRAMLAMA", "KARİYER PLANLAMA VE GELİŞTİRME", " ELEŞTİREL VE ANALİTİK DÜŞÜNME", "ÖĞRETİM İLKE VE YÖNTEMLERİ"],
-      lessonss: []
+      /* lessons: [
+          "BIL0003 - EĞİTİMDE YAPAY ZEKA UYGULAMALARI",
+          "BİLİŞİM SİSTEMLERİ DONANIMI",
+          "TEMEL PROGRAMLAMA",
+          "EĞİTİMDE GRAFİK VE CANLANDIRMA",
+          "ÖĞRETİM TASARIMI",
+          "WEB TABANLI PROGRAMLAMA",
+          "KARİYER PLANLAMA VE GELİŞTİRME",
+          " ELEŞTİREL VE ANALİTİK DÜŞÜNME",
+          "ÖĞRETİM İLKE VE YÖNTEMLERİ"
+      ],*/
+      lessons: [],
+      loading: false
     };
   },
-  created: function created() {
-    var _this = this;
+  methods: {
+    loadLesson: function loadLesson() {
+      var _this = this;
 
-    console.log(this.lessonss);
-    axios.get("/api/lesson").then(function (response) {
-      _this.lessonss = response.data;
-      console.log(_this.lessonss);
-    })["catch"](function (e) {
-      return _this.errors.push(e);
-    });
+      this.loading = true;
+
+      if (this.loading) {
+        axios.get("./api/lesson").then(function (response) {
+          _this.lessons = response.data;
+        })["catch"](function (e) {
+          return _this.errors.push(e);
+        })["finally"](function () {
+          return _this.loading = false;
+        });
+      }
+    }
+  },
+  created: function created() {
+    this.loadLesson();
   }
 });
 
@@ -6728,7 +6754,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.information[data-v-4087bff9] {\r\n    border-top: 2px solid #00c0ef;\r\n    border-left: 1px solid lightgray;\r\n    border-right: 1px solid lightgray;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display[data-v-4087bff9] {\r\n    display: flex;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display-title[data-v-4087bff9] {\r\n    width: 25%;\r\n    font-weight: 630;\r\n    font-size: 0.95rem;\r\n    text-transform: capitalize;\n}\n.field-display-title[data-v-4087bff9],\r\n.field-display-value[data-v-4087bff9] {\r\n    padding: 2px 1px;\n}\n.field-display-value[data-v-4087bff9] {\r\n    width: 75%;\r\n    font-size: 0.8rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.information[data-v-4087bff9] {\r\n    border-top: 2px solid #00c0ef;\r\n    border-left: 1px solid lightgray;\r\n    border-right: 1px solid lightgray;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display[data-v-4087bff9] {\r\n    display: flex;\r\n    border-bottom: 1px solid lightgray;\n}\n.field-display-title[data-v-4087bff9] {\r\n    width: 25%;\r\n    font-weight: 630;\r\n    font-size: 0.95rem;\r\n    text-transform: capitalize;\n}\n.field-display-title[data-v-4087bff9],\r\n.field-display-value[data-v-4087bff9] {\r\n    padding: 3px 1px;\n}\n.field-display-value[data-v-4087bff9] {\r\n    width: 75%;\r\n    font-size: 0.9rem;\n}\r\n", ""]);
 
 // exports
 
@@ -38675,14 +38701,26 @@ var render = function() {
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
-    _vm._m(1),
+    _c("div", { staticClass: "information-item" }, [
+      _c("div", { staticClass: "field-display" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c("div", { staticClass: "field-display-value" }, [
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.name))
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "information-item" }, [
       _c("div", { staticClass: "field-display" }, [
         _vm._m(2),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.code))
+          ])
         ])
       ])
     ]),
@@ -38692,7 +38730,9 @@ var render = function() {
         _vm._m(3),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.ects))
+          ])
         ])
       ])
     ]),
@@ -38702,7 +38742,9 @@ var render = function() {
         _vm._m(4),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.akts))
+          ])
         ])
       ])
     ]),
@@ -38712,7 +38754,9 @@ var render = function() {
         _vm._m(5),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(5))])
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.theory))
+          ])
         ])
       ])
     ]),
@@ -38722,7 +38766,9 @@ var render = function() {
         _vm._m(6),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(4))])
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.application))
+          ])
         ])
       ])
     ]),
@@ -38732,16 +38778,52 @@ var render = function() {
         _vm._m(7),
         _vm._v(" "),
         _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v(_vm._s(3))])
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.laboratory))
+          ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(8),
+    _c("div", { staticClass: "information-item" }, [
+      _c("div", { staticClass: "field-display" }, [
+        _vm._m(8),
+        _vm._v(" "),
+        _c("div", { staticClass: "field-display-value" }, [
+          _c("p", { staticClass: " my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.credit))
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
-    _vm._m(9),
+    _c("div", { staticClass: "information-item" }, [
+      _c("div", { staticClass: "field-display" }, [
+        _vm._m(9),
+        _vm._v(" "),
+        _c("div", { staticClass: "field-display-value" }, [
+          _c("p", { staticClass: "m-auto" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.detail.purpose) +
+                "\n                "
+            )
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
-    _vm._m(10)
+    _c("div", { staticClass: "information-item" }, [
+      _c("div", { staticClass: "field-display" }, [
+        _vm._m(10),
+        _vm._v(" "),
+        _c("div", { staticClass: "field-display-value" }, [
+          _c("p", { staticClass: "my-auto" }, [
+            _vm._v(_vm._s(_vm.detail.resource))
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -38767,18 +38849,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information-item" }, [
-      _c("div", { staticClass: "field-display" }, [
-        _c("div", { staticClass: "field-display-title px-3" }, [
-          _c("span", [_vm._v("Course name")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [
-            _vm._v("INFORMATION SYSTEMS HARDWARE")
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "field-display-title px-3" }, [
+      _c("span", [_vm._v("Course name")])
     ])
   },
   function() {
@@ -38833,64 +38905,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information-item" }, [
-      _c("div", { staticClass: "field-display" }, [
-        _c("div", { staticClass: "field-display-title px-3" }, [
-          _c("span", [_vm._v("Credit")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: " my-auto" }, [_vm._v("4")])
-        ])
-      ])
+    return _c("div", { staticClass: "field-display-title px-3" }, [
+      _c("span", [_vm._v("Credit")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information-item" }, [
-      _c("div", { staticClass: "field-display" }, [
-        _c("div", { staticClass: "field-display-title px-3" }, [
-          _c("span", [_vm._v("purpose ")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: "m-auto" }, [
-            _vm._v(
-              "\n                    Lorem ipsum dolor sit amet consectetur adipisicing elit.\n                    Obcaecati exercitationem a veritatis minima. Minus\n                    molestiae corrupti dolorum! Officiis velit fugit\n                    cupiditate eos culpa dolore blanditiis nisi, tenetur\n                    illum rerum? Quia.\n                "
-            )
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "field-display-title px-3" }, [
+      _c("span", [_vm._v("purpose ")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "information-item" }, [
-      _c("div", { staticClass: "field-display" }, [
-        _c("div", { staticClass: "field-display-title px-3" }, [
-          _c("span", [_vm._v("Course Resources")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "field-display-value" }, [
-          _c("p", { staticClass: "my-auto" }, [
-            _vm._v(
-              "\n                    - Pala, Z. Bilgisayar Donanımı, Türkmen Kitapevi, 2005\n                    İstanbul.\n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "my-auto" }, [
-            _vm._v(
-              "\n                    - Pusula Yayıncılık, Bilgisayar Donanımı Kitabı pdf\n                    (Public)\n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "my-auto" }, [_vm._v("- www.cizgi-tagem.org")])
-        ])
-      ])
+    return _c("div", { staticClass: "field-display-title px-3" }, [
+      _c("span", [_vm._v("Course Resources")])
     ])
   }
 ]
@@ -38929,13 +38961,24 @@ var render = function() {
                 "ul",
                 { key: index, staticClass: "list-unstyled text-uppercase" },
                 [
-                  _c("li", [
-                    _c(
-                      "a",
-                      { staticClass: "text-white", attrs: { href: "/" } },
-                      [_vm._v(_vm._s(lesson.code) + "-" + _vm._s(lesson))]
-                    )
-                  ])
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "text-white",
+                          attrs: { to: "ders-bilgileri/" + lesson.id }
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(lesson.code) + "-" + _vm._s(lesson.name)
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
                 ]
               )
             }),
@@ -54794,7 +54837,7 @@ var routes = [{
   path: "/test",
   component: _components_ExampleComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
-  path: "/ders-bilgileri",
+  path: "/ders-bilgileri/:lessonId",
   component: _components_LessonInformation_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({

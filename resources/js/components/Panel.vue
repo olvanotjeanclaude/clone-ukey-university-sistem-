@@ -13,8 +13,12 @@
                             :key="index"
                         >
                             <li>
-                                <a href="/" class="text-white"
-                                    >{{ lesson.code }}-{{ lesson }}</a
+                                <router-link
+                                    class="text-white"
+                                    :to="`ders-bilgileri/${lesson.id}`"
+                                    >{{ lesson.code }}-{{
+                                        lesson.name
+                                    }}</router-link
                                 >
                             </li>
                         </ul>
@@ -76,7 +80,7 @@
 export default {
     data() {
         return {
-            lessons: [
+            /* lessons: [
                 "BIL0003 - EĞİTİMDE YAPAY ZEKA UYGULAMALARI",
                 "BİLİŞİM SİSTEMLERİ DONANIMI",
                 "TEMEL PROGRAMLAMA",
@@ -86,19 +90,27 @@ export default {
                 "KARİYER PLANLAMA VE GELİŞTİRME",
                 " ELEŞTİREL VE ANALİTİK DÜŞÜNME",
                 "ÖĞRETİM İLKE VE YÖNTEMLERİ"
-            ],
-            lessonss: []
+            ],*/
+            lessons: [],
+            loading: false
         };
     },
+    methods: {
+        loadLesson() {
+            this.loading = true;
+            if (this.loading) {
+                axios
+                    .get("./api/lesson")
+                    .then(response => {
+                        this.lessons = response.data;
+                    })
+                    .catch(e => this.errors.push(e))
+                    .finally(() => (this.loading = false));
+            }
+        }
+    },
     created() {
-        console.log(this.lessonss);
-        axios
-            .get("/api/lesson")
-            .then(response => {
-                this.lessonss = response.data;
-                console.log(this.lessonss);
-            })
-            .catch(e => this.errors.push(e));
+        this.loadLesson();
     }
 };
 </script>

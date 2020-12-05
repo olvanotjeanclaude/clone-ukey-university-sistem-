@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <title>Clone ukey</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <!-- Styles -->
 
 </head>
@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div id="main-page">
+        <div id="main-page" class="">
             <div class="sidebar bg-light">
                 <ul class="list-group list-unstyled text-capitalize">
 
@@ -111,7 +111,7 @@
             </main>
         </div>
     </div>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
     <script src="/js/app.js"></script>
 </body>
 
