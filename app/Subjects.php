@@ -8,4 +8,8 @@ class Subjects extends Model
 {
     protected $guarded = [];
     public $timestamps = true;
+    public function students()
+    {
+        $this->hasMany("App\Students", "student_id");
+    }
 }

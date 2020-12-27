@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Lesson;
+use App\Students;
+use App\StudentsSchoolInformation;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -83,5 +86,26 @@ class LessonController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getStudents($id_lesson)
+    {
+
+        $data = [];
+        $i = 0;
+        $students = Lesson::find($id_lesson)->students()->get();
+        $lessons = Lesson::with(
+            "studentsSchoolInformation.students"
+        )->where("id", $id_lesson)->get();
+
+        return response()->json($lessons);
+    }
+
+    public function getLessonContent($id_lesson)
+    {
+
+        $courseContent = Lesson::findOrFail($id_lesson)->lessonContent()->get();
+
+        return response()->json($courseContent);
     }
 }

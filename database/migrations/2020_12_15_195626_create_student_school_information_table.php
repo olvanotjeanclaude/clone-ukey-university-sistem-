@@ -15,14 +15,21 @@ class CreateStudentSchoolInformationTable extends Migration
     {
         Schema::create('students_school_information', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->foreignId("student_id");
+            $table->integer("lesson_id")->unsigned();
+            $table->integer("student_id")->unsigned();
             $table->boolean("isInSystem")->default(true);
             $table->string("status")->nullable()->default("clean");
             $table->string("transcript")->nullable();
             $table->string("diplome")->nullable();
             $table->string("others")->nullable();
             $table->text("description")->nullable();
+            $table->timestamps();
+            $table->foreign('lesson_id')->references('id')->on('App\Lesson')
+                ->onDelete('cascade')
+                ->onUpdate("cascade");
+            $table->foreign('student_id')->references('id')->on('App\Students')
+                ->onDelete('cascade')
+                ->onUpdate("cascade");
         });
     }
 

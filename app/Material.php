@@ -4,13 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class Material extends Model
 {
     protected $guarded = [];
     public $timestamps = true;
-
-    public function classes()
-    {
-        $this->hasMany("App\Classes");
-    }
 }

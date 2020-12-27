@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get("lesson", "LessonController@index");
 Route::get("lesson/{id}", "LessonController@show");
+Route::get("lesson/{id_lesson}/student/list", "LessonController@getStudents");
+Route::get("lesson/{id_lesson}/content", "LessonController@getLessonContent");
 //Route::resource("lesson", "LessonController");

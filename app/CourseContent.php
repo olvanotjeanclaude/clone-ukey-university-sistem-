@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Teachers extends Model
+class CourseContent extends Model
 {
     protected $guarded = [];
     public $timestamps = true;
 
-    public function students()
+    public function lesson()
     {
-        $this->hasMany("\App\Students", "student_id");
+        return $this->belongsTo("App\Lesson");
     }
 }

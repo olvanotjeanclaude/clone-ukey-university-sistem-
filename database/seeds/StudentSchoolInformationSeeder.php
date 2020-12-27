@@ -14,9 +14,10 @@ class StudentSchoolInformationSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             StudentsSchoolInformation::create([
-                "student_id" => date("Y") . $i
+                "student_id" =>  rand(1, 50),
+                "lesson_id" => rand(1, 8)
             ]);
         }
     }

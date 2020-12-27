@@ -15,7 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer("lesson_id")->unsigned();
             $table->string("surname");
             $table->string("lastname");
             $table->date("birthday");
@@ -23,6 +23,10 @@ class CreateStudentsTable extends Migration
             $table->string("email");
             $table->string("telephone");
             $table->string("address")->nullable();
+            $table->foreign('lesson_id')->references('id')->on('App\Lesson')
+                ->onDelete('cascade')
+                ->onUpdate("cascade");
+            $table->timestamps();
         });
     }
 

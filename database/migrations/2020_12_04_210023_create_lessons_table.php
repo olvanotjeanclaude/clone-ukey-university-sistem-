@@ -15,6 +15,7 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
+            // $table->foreignId("course_contents_id");
             $table->string("name", 50);
             $table->string("code");
             $table->integer("ects");

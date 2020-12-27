@@ -1,0 +1,120 @@
+#main-page {
+    position: relative;
+    width: 100%;
+    background: #fefefe;
+    display: flex;
+}
+
+main {
+    width: 75%;
+}
+
+
+/*all card, componet
+groups,project,exercice
+general font size 0.9
+*/
+
+.table-box {
+    margin: 0.7em;
+    overflow-x: auto;
+    font-size: 0.88rem;
+}
+
+.table-title {
+    padding: 0.3em;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.table-box table thead {
+    font-size: 0.96rem;
+    background: rgba(233, 226, 226, 0.87);
+    color: #555;
+}
+
+.table-content {
+    width: 100%;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.table-content .item {
+    padding: 8px;
+    vertical-align: middle;
+}
+
+.component-title {
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+
+.borderLightBlue,
+.borderLightGreen,
+.borderLightWarning {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.borderLightGreen {
+    border-top: 2px solid #00a65a;
+}
+
+.borderLightBlue {
+    border-top: 2px solid #3c8dbc;
+}
+
+.borderLightWarning {
+    border-top: 2px solid #ffc107;
+}
+
+.borderRadiusTop {
+    border-radius: 5px 5px 0 0 !important;
+    -webkit-border-radius: 5px 5px 0 0 !important;
+    -moz-border-radius: 5px 5px 0 0 !important;
+    -ms-border-radius: 5px 5px 0 0 !important;
+    -o-border-radius: 5px 5px 0 0 !important;
+}
+
+.title {
+    text-transform: capitalize;
+    font-weight: 630;
+}
+
+.fa-search {
+    font-size: 16px;
+}
+
+
+/*homework and project*/
+
+.card-header {
+    padding-top: 0.3em !important;
+    padding-bottom: 0.3em !important;
+    text-transform: capitalize;
+}
+
+.form-row {
+    margin-top: 5px;
+    border: 1px solid #fefefe;
+    font-size: 0.9rem;
+}
+
+label {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+#description {
+    height: 60px;
+}
+
+input.form-control,
+select {
+    height: 1.8rem;
+}
+
+
+/*end homework and project*/
