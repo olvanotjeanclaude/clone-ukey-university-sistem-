@@ -8,8 +8,8 @@
           </div>
           <div class="card-body">
             <div v-if="loading">loading</div>
+
             <ul
-              v-else
               class="list-unstyled text-uppercase"
               v-for="(lesson, index) in lessons"
               :key="index"
@@ -93,6 +93,7 @@ export default {
     loadLesson() {
       this.loading = true;
 
+      // @ts-ignore
       axios
         .get("./api/lesson")
         .then((response) => {

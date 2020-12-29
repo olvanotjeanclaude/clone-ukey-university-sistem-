@@ -2279,7 +2279,8 @@ __webpack_require__.r(__webpack_exports__);
     loadLesson: function loadLesson() {
       var _this = this;
 
-      this.loading = true;
+      this.loading = true; // @ts-ignore
+
       axios.get("./api/lesson").then(function (response) {
         _this.lessons = response.data;
       })["catch"](function (e) {
@@ -40383,41 +40384,36 @@ var render = function() {
             "div",
             { staticClass: "card-body" },
             [
-              _vm.loading
-                ? _c("div", [_vm._v("loading")])
-                : _vm._l(_vm.lessons, function(lesson, index) {
-                    return _c(
-                      "ul",
-                      {
-                        key: index,
-                        staticClass: "list-unstyled text-uppercase"
-                      },
+              _vm.loading ? _c("div", [_vm._v("loading")]) : _vm._e(),
+              _vm._v(" "),
+              _vm._l(_vm.lessons, function(lesson, index) {
+                return _c(
+                  "ul",
+                  { key: index, staticClass: "list-unstyled text-uppercase" },
+                  [
+                    _c(
+                      "li",
                       [
                         _c(
-                          "li",
+                          "router-link",
+                          {
+                            staticClass: "text-white",
+                            attrs: {
+                              to: "lesson/" + lesson.id + "/ders-bilgileri"
+                            }
+                          },
                           [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "text-white",
-                                attrs: {
-                                  to: "lesson/" + lesson.id + "/ders-bilgileri"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  _vm._s(lesson.code) +
-                                    "-" +
-                                    _vm._s(lesson.name)
-                                )
-                              ]
+                            _vm._v(
+                              _vm._s(lesson.code) + "-" + _vm._s(lesson.name)
                             )
-                          ],
-                          1
+                          ]
                         )
-                      ]
+                      ],
+                      1
                     )
-                  })
+                  ]
+                )
+              })
             ],
             2
           ),
@@ -59414,7 +59410,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 var studentList = function studentList() {
-  return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../js/components/Students/StudentList.vue */ "./resources/js/components/Students/StudentList.vue"));
+  return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! ../js/components/Students/StudentList.vue */ "./resources/js/components/Students/StudentList.vue"));
 };
 
 
