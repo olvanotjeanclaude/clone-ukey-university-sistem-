@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -93,7 +94,6 @@ export default {
     loadLesson() {
       this.loading = true;
 
-      // @ts-ignore
       axios
         .get("./api/lesson")
         .then((response) => {

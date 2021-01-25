@@ -16,11 +16,14 @@ const studentList = () =>
 import MainPage from "./components/MainPage.vue";
 import Groups from "./components/Groups/Groups.vue"
 import GroupDetail from "./components/Groups/GroupDetailComponent.vue"
+
 import Exercice from "./components/ExerciseAndProject/Exercice.vue"
 import ExerciceDetailComponent from "./components/ExerciseAndProject/ExerciceDetailComponent.vue";
+
 import Exams from "../js/components/Exams/Exams.vue";
 import ExamsDetail from "../js/components/Exams/ExamsDetailComponent.vue";
 import ExamResult from "../js/components/Exams/ExamEvaluation.vue"
+import ExamStartComponent from "../js/components/Exams/ExamStartComponent.vue"
 
 const routes = [
     { path: "/", component: Panel },
@@ -42,6 +45,7 @@ const routes = [
             { path: "/lesson/:lessonId/exams", component: Exams },
             { path: "/lesson/:lessonId/exams/detail", component: ExamsDetail },
             { path: "/lesson/:lessonId/exams/result", component: ExamResult },
+            { path: "/lesson/:lessonId/exams/start", name: "startingExam", component: ExamStartComponent },
         ]
     },
 ];

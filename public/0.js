@@ -94,7 +94,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (this.lessonId) {
         this.loading = true;
-        var fullUrl = baseUrl + "/api/lesson/" + this.lessonId + "/student/list";
+        var fullUrl = baseUrl + "/api/lesson/" + this.lessonId + "/student/list"; // @ts-ignore
+
         axios.get(fullUrl).then(function (response) {
           _this.lessons = response.data[0].students_school_information; //console.log(this.lessons);
         })["catch"](function (errors) {

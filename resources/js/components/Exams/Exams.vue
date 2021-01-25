@@ -1,5 +1,6 @@
 <template>
   <div>
+    <exam-modal :isModalVisible="isModalVisible" ref="modal"></exam-modal>
     <div class="table-box borderLightBlue borderRadiusTop">
       <h5 class="text-muted table-title">exams information</h5>
       <table class="table">
@@ -22,6 +23,8 @@
               <router-link :to="`/lesson/${lessonId}/exams/result`">
                 <i class="ml-2 fa fa-arrow-circle-right"></i>
               </router-link>
+
+              <i class="ml-2 fa fa-check active" @click="startExam"></i>
             </td>
             <td class="item">Web Tabanlı Programlama Vize 2020-2021</td>
             <td class="item">27.11.2020 19:00:00</td>
@@ -35,11 +38,22 @@
 </template>
 
 <script>
+import ExamModal from "./Modal.vue";
 export default {
   data() {
     return {
+      isModalVisible: false,
       lessonId: this.$route.params.lessonId,
     };
+  },
+  methods: {
+    startExam() {
+      this.isModalVisible = true;
+      this.$refs.modal.showModal(this.lessonId);
+    },
+  },
+  components: {
+    ExamModal,
   },
 };
 </script>
@@ -50,5 +64,8 @@ td {
 }
 th {
   padding: 7px;
+}
+.fa-check {
+  cursor: pointer;
 }
 </style>

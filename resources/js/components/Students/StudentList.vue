@@ -76,6 +76,7 @@ export default {
         this.loading = true;
         let fullUrl = baseUrl + "/api/lesson/" + this.lessonId + "/student/list";
 
+        // @ts-ignore
         axios
           .get(fullUrl)
           .then((response) => {

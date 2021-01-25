@@ -65,6 +65,7 @@
 </template>
 
 <script>
+import ExamModal from "./";
 export default {
   data() {
     return {
@@ -119,6 +120,7 @@ export default {
       alert("you choise :" + questionId);
     },
   },
+  components: {},
 };
 </script>
 

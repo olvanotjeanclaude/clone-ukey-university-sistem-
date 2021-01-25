@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-row">
-          <label f or="description" class="col-md-3">description</label>
+          <label for="description" class="col-md-3">description</label>
           <textarea name="" class="form-control col-md-5" id="description"></textarea>
         </div>
 

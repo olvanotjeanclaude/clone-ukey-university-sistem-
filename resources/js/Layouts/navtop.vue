@@ -7,7 +7,7 @@
             <h3 class="mx-2 text-uppercase">ukey</h3>
           </div>
           <div class="uludag">
-            <p class="mt-2 text-capitalize">University of toamasina</p>
+            <p class="mt-2 text-capitalize">University X</p>
           </div>
         </div>
       </div>
