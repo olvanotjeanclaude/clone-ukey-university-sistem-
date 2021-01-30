@@ -32,7 +32,7 @@
 export default {
   data() {
     return {
-      user: "olvanot jean claude rakotonirina",
+      user: "anonymous students",
     };
   },
 };

@@ -2,7 +2,7 @@
   <div>
     <div class="row mx-3">
       <div class="offset-6 col-6">
-        <h5 class="today font-weight-bold text-info float-right mt-3">{{ todayIs() }}</h5>
+        <h5 class="today font-weight-bold text-info float-right mt-3">{{ todayDate }}</h5>
       </div>
     </div>
 
@@ -53,9 +53,10 @@ import ExamModal from "./Modal.vue";
 export default {
   data() {
     return {
+      todayDate: "",
       isModalVisible: false,
       lessonId: this.$route.params.lessonId,
-      examDateTime: "2021/01/03 19:01",
+      examDateTime: "2021/01/30 22:05",
       ExamDuration: 30,
       lastEntry: 5,
     };
@@ -65,7 +66,7 @@ export default {
       var exam = new Date(this.examDateTime);
       var examTime = exam.getTime() ? exam.getTime() : 0;
       var lastEntry = examTime + this.lastEntry * 60 * 1000; //last entry to seconde
-      var now = new Date("2021/01/03 19:05").getTime();
+      var now = new Date().getTime();
 
       if (this.isExamToday()) {
         return examTime <= now && now < lastEntry;
@@ -76,7 +77,6 @@ export default {
       if (!this.examDateTime) return false;
       var today = this.todayIs().slice(0, 10);
       var examDate = this.examDateTime.slice(0, 10);
-
       return today == examDate;
     },
 
@@ -94,10 +94,10 @@ export default {
       var currentHours = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
       var currentMinutes =
         date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
+      this.todayDate = `${currentDay}.${currentMonth}.${currentYear} ${currentHours}:${currentMinutes}`;
 
-      var today = `${currentDay}.${currentMonth}.${currentYear} ${currentHours}:${currentMinutes}`;
+      var today = `${currentYear}/${currentMonth}/${currentDay} ${currentHours}:${currentMinutes}`;
 
-      return "2021/01/03 19:01";
       return today;
     },
   },

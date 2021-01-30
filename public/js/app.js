@@ -2056,7 +2056,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      user: "olvanot jean claude rakotonirina"
+      user: "anonymous students"
     };
   }
 });
@@ -2689,9 +2689,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      todayDate: "",
       isModalVisible: false,
       lessonId: this.$route.params.lessonId,
-      examDateTime: "2021/01/03 19:01",
+      examDateTime: "2021/01/30 22:05",
       ExamDuration: 30,
       lastEntry: 5
     };
@@ -2702,7 +2703,7 @@ __webpack_require__.r(__webpack_exports__);
       var examTime = exam.getTime() ? exam.getTime() : 0;
       var lastEntry = examTime + this.lastEntry * 60 * 1000; //last entry to seconde
 
-      var now = new Date("2021/01/03 19:05").getTime();
+      var now = new Date().getTime();
 
       if (this.isExamToday()) {
         return examTime <= now && now < lastEntry;
@@ -2725,8 +2726,8 @@ __webpack_require__.r(__webpack_exports__);
       var currentYear = date.getFullYear();
       var currentHours = date.getHours() < 10 ? "0".concat(date.getHours()) : date.getHours();
       var currentMinutes = date.getMinutes() < 10 ? "0".concat(date.getMinutes()) : date.getMinutes();
-      var today = "".concat(currentDay, ".").concat(currentMonth, ".").concat(currentYear, " ").concat(currentHours, ":").concat(currentMinutes);
-      return "2021/01/03 19:01";
+      this.todayDate = "".concat(currentDay, ".").concat(currentMonth, ".").concat(currentYear, " ").concat(currentHours, ":").concat(currentMinutes);
+      var today = "".concat(currentYear, "/").concat(currentMonth, "/").concat(currentDay, " ").concat(currentHours, ":").concat(currentMinutes);
       return today;
     }
   },
@@ -41433,7 +41434,7 @@ var render = function() {
             {
               staticClass: "today font-weight-bold text-info float-right mt-3"
             },
-            [_vm._v(_vm._s(_vm.todayIs()))]
+            [_vm._v(_vm._s(_vm.todayDate))]
           )
         ])
       ]),
