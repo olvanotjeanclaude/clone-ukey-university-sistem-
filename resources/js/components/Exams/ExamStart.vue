@@ -25,8 +25,8 @@
           <div class="radio" v-for="(option, key) in question.options" :key="'key' + key">
             <input
               type="radio"
+              :value="`${question.answer}`"
               :name="`question${question.id}`"
-              :value="`${option}`"
               v-model="responses[`question${question.id}`]"
             />
             <label>{{ option }}</label>
@@ -54,7 +54,6 @@
             >
               save
             </button>
-            <div :id="`info${question.id}`" class="info text-success"></div>
           </div>
         </div>
       </div>
@@ -69,7 +68,7 @@
 </template>
 
 <script>
-//import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import { mapState } from "vuex";
 
 export default {
@@ -82,6 +81,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters("exams", ["getExams"]),
     ...mapState("exams", ["exams"]),
   },
 
@@ -102,24 +102,19 @@ export default {
     },
 
     save(data, questionId) {
-      this.responses[questionId] = data;
+      if (data.userAnswer) {
+        this.responses[questionId] = data;
+        console.log(this.responses[questionId]);
 
-      if (this.responses[questionId]) {
-        //console.log(this.responses);
-        var userAnswer = this.responses[questionId].userAnswer;
-        if (userAnswer) {
+        if (this.responses[questionId].userAnswer) {
           $(".btn-save-" + questionId).addClass("disabled");
           $(".btn-save-" + questionId).prop("disabled", true);
           $(".btn-clear-" + questionId).addClass("active");
           $(".btn-clear-" + questionId).prop("disabled", false);
-
-          $("#info" + questionId)
-            .text(`answered (${userAnswer})`)
-            .show();
         }
       }
 
-      console.log(this.getNotes());
+      //this.getNotes();
     },
 
     getNotes() {
@@ -132,19 +127,13 @@ export default {
     },
 
     clear(questionId) {
-      if (this.responses[questionId]) {
-        this.responses[questionId].answered = false;
-        var userAnswer = this.responses[questionId].userAnswer;
-
-        if (userAnswer) {
-          $(".btn-save-" + questionId).removeClass("disabled");
-          $(".btn-save-" + questionId).prop("disabled", false);
-          $(".btn-clear-" + questionId).removeClass("active");
-          $(".btn-clear-" + questionId).prop("disabled", true);
-        }
+      if (this.responses[questionId] && this.responses[questionId].userAnswer) {
+        this.responses[questionId].userAnswer = "";
+        $(".btn-save-" + questionId).removeClass("disabled");
+        $(".btn-save-" + questionId).prop("disabled", false);
+        $(".btn-clear-" + questionId).removeClass("active");
+        $(".btn-clear-" + questionId).prop("disabled", true);
       }
-
-      $("#info" + questionId).hide();
     },
 
     countDown(examDuration, lastEntry) {
@@ -183,7 +172,6 @@ export default {
     if (!this.isExamStop) {
       this.countDown(this.examDuration, this.lastEntry);
     }
-    $(".info").hide();
   },
 };
 </script>

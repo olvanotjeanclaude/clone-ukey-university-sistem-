@@ -21,11 +21,6 @@
         </div>
 
         <div class="form-row">
-          <label for="email" class="col-md-3">max member</label>
-          <input type="email" class="form-control col-md-5" id="email" />
-        </div>
-
-        <div class="form-row">
           <label for="start-time" class="col-md-3">Start date and time</label>
           <input
             type="datetime"
@@ -36,7 +31,7 @@
         </div>
 
         <div class="form-row">
-          <label for="end-time" class="col-md-3">last login</label>
+          <label for="end-time" class="col-md-3">last entry</label>
           <input
             type="datetime"
             class="form-control col-md-5"

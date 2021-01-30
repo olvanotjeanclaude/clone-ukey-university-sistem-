@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div v-if="isExamFinish" class="alert alert-info m-3 text-center" role="alert">
+      Exam finished!
+    </div>
     <form class="card mt-2 mb-3 mx-3">
       <div class="card-header text-capitalize borderLightBlue borderRadiusTop">
         <h5 class="text-muted">evaluation of examination</h5>
@@ -16,7 +19,7 @@
         </div>
 
         <div class="form-row">
-          <label f or="description" class="col-md-3">description</label>
+          <label for="description" class="col-md-3">description</label>
           <textarea name="" class="form-control col-md-5" id="description"></textarea>
         </div>
 
@@ -89,6 +92,27 @@
     </form>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      isExamFinish: false,
+    };
+  },
+  methods: {
+    getExamStatus() {
+      var examStatus = this.$route.query.examStatus;
+
+      if (examStatus == "finished") {
+        this.isExamFinish = true;
+      }
+    },
+  },
+  mounted() {
+    this.getExamStatus();
+  },
+};
+</script>
 
 <style scoped>
 .card-header {

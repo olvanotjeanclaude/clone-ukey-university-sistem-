@@ -55,7 +55,7 @@ export default {
     }
   },
   watch: {
-    $route(to, from) {
+    $route(to) {
       this.lessonId = to.params.lessonId;
     },
   },

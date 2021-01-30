@@ -37,15 +37,17 @@ export default {
     return {
       lessonId: this.$route.params.lessonId,
       modalOpen: this.isModalVisible,
+      cantEnter: false,
     };
   },
   methods: {
-    showModal(id) {
+    showModal() {
       this.modalOpen = true;
       this.$nextTick(() => {
         $("#modalExamStart").modal("show");
       });
     },
+
     startQuestion() {
       this.$router.push({ name: "startingExam", params: { lessonId: this.lessonId } });
       $("#modalExamStart").modal("hide");

@@ -44,7 +44,7 @@ const routes = [
             },
             { path: "/lesson/:lessonId/exams", component: Exams },
             { path: "/lesson/:lessonId/exams/detail", component: ExamsDetail },
-            { path: "/lesson/:lessonId/exams/result", component: ExamResult },
+            { path: "/lesson/:lessonId/exams/result", name: "examResult", component: ExamResult },
             { path: "/lesson/:lessonId/exams/start", name: "startingExam", component: ExamStartComponent },
         ]
     },
