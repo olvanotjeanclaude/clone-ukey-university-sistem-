@@ -37,12 +37,12 @@
       </li>
 
       <li class="list-group-item">
-        <router-link to="#">
+        <router-link :to="`/lesson/${lessonId}/coursesMaterials`">
           <i class="mr-2 fa fa-book"></i>
           course materials
         </router-link>
       </li>
-
+      <!--
       <li class="list-group-item">
         <router-link to="#">
           <i class="mr-2 fa fa-comments"></i>
@@ -55,6 +55,8 @@
           <i class="mr-2 fa fa-video"></i>virtual meetings
         </router-link>
       </li>
+
+      -->
 
       <li class="list-group-item">
         <router-link to="/"> <i class="mr-2 fa fa-home"></i>panel </router-link>

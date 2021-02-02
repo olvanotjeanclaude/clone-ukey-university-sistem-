@@ -56,7 +56,7 @@ export default {
       todayDate: "",
       isModalVisible: false,
       lessonId: this.$route.params.lessonId,
-      examDateTime: "2021/01/30 22:05",
+      examDateTime: "2021/02/03 02:35 ",
       ExamDuration: 30,
       lastEntry: 5,
     };
@@ -87,7 +87,7 @@ export default {
 
     todayIs() {
       var date = new Date();
-      var currentDay = date.getDate();
+      var currentDay = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
       var currentMonth =
         date.getMonth() < 10 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
       var currentYear = date.getFullYear();

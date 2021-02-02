@@ -3,6 +3,7 @@
     width: 100%;
     background: #fefefe;
     display: flex;
+    min-height: 110vh;
 }
 
 main {

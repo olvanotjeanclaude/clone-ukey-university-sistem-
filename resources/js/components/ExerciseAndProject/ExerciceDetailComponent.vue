@@ -90,8 +90,8 @@
 <script>
 import ExoDetail from "./ExoDetail.vue";
 import HomeworkSubmission from "./HomeworkSubmission.vue";
-import DocumentHelper from "./DocumentHelper";
-import GroupEvaluationForm from "./GroupEvaluationForm";
+import DocumentHelper from "./DocumentHelper.vue";
+import GroupEvaluationForm from "./GroupEvaluationForm.vue";
 
 export default {
   components: {

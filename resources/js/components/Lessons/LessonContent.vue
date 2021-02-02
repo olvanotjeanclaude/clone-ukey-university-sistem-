@@ -2,7 +2,7 @@
   <div>
     <lesson-information></lesson-information>
     <div id="lessonContent" class="mt-2 mb-3 mx-3 borderLightGreen borderRadiusTop">
-      <h5 class="text-muted card-header m-auto">lesson content</h5>
+      <h5 class="text-muted card-header m-auto">weekly lesson content</h5>
       <table class="table lesson-content">
         <thead>
           <tr class="text-capitalize">
@@ -18,7 +18,9 @@
         <tbody v-else>
           <tr v-for="lesson in lessonContent" :key="lesson.id">
             <td class="item text-center">
-              <a href=""><i class="fa fa-search"></i></a>
+              <router-link :to="`/lesson/${lessonId}/coursesDetail`">
+                <i class="fa fa-search"></i>
+              </router-link>
             </td>
             <td class="item text-center">{{ lesson.week }}</td>
             <td class="item">{{ lesson.theory }}</td>
@@ -39,7 +41,9 @@
 </template>
 
 <script>
-import LessonInformation from "./LessonInformation";
+import LessonInformation from "./LessonInformation.vue";
+import axios from "axios";
+
 export default {
   data() {
     return {
