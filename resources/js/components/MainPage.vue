@@ -5,19 +5,7 @@
         <div class="row bg-light border-bottom rowBredCrumb">
           <div class="col-md-3"></div>
           <div class="col-md-9 px-0">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item">
-                  <a href="#">Home</a>
-                </li>
-                <li class="breadcrumb-item">
-                  <a href="#">Library</a>
-                </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  id : {{ lessonId }}
-                </li>
-              </ol>
-            </nav>
+            <bread-crumb></bread-crumb>
           </div>
         </div>
       </div>
@@ -34,30 +22,34 @@
 </template>
 
 <script>
+import BreadCrumb from "../Layouts/BreadCrumb.vue";
 import Sidebar from "../../js/Layouts/sidebar.vue";
-import LessonContent from "./Lessons/LessonContent.vue";
+//import LessonContent from "./Lessons/LessonContent.vue";
+
 export default {
   data() {
     return {
       sidebar: false,
-      lessonId: undefined,
-      lessonContent: false,
+      lessonId: null,
     };
   },
+
   components: {
     "sidebar-component": Sidebar,
-    LessonContent,
+    "bread-crumb": BreadCrumb,
+    //  LessonContent,
+  },
+
+  methods: {
+    getSideBar() {
+      this.lessonId = this.$route.params.lessonId;
+      if (this.lessonId != undefined) {
+        this.sidebar = true;
+      }
+    },
   },
   created() {
-    this.lessonId = this.$route.params.lessonId;
-    if (this.lessonId != undefined) {
-      this.sidebar = true;
-    }
-  },
-  watch: {
-    $route(to) {
-      this.lessonId = to.params.lessonId;
-    },
+    this.getSideBar();
   },
 };
 </script>

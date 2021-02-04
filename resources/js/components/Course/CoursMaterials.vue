@@ -19,7 +19,7 @@
         <tbody class="table-content">
           <tr>
             <td class="item">
-              <router-link :to="`/lesson/${lessonId}/coursesDetail`">
+              <router-link :to="`/lesson/${lessonId}/coursesMaterials/courseDetail`">
                 <i class="fa fa-search"></i>
               </router-link>
             </td>

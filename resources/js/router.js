@@ -40,7 +40,7 @@ const routes = [
             { path: "/lesson/:lessonId/ders-bilgileri", component: LessonInformation },
             { path: "/lesson/:lessonId/lessonDetail", component: lessonDetail },
             { path: "/lesson/:lessonId/content", component: LessonContent },
-            { path: "/lesson/:lessonId/group", component: Groups, },
+            { path: "/lesson/:lessonId/groups", component: Groups, },
             { path: "/lesson/:lessonId/group/group-detail", component: GroupDetail },
             { path: "/lesson/:lessonId/exercises", component: Exercice },
             {
@@ -53,6 +53,7 @@ const routes = [
             { path: "/lesson/:lessonId/exams/start", name: "startingExam", component: ExamStartComponent },
             { path: "/lesson/:lessonId/coursesMaterials", name: "coursMaterials", component: Courses },
             { path: "/lesson/:lessonId/coursesDetail", name: "coursDetail", component: CourseDetailComponent },
+            { path: "/lesson/:lessonId/coursesMaterials/courseDetail", component: CourseDetail },
         ]
     },
 ];

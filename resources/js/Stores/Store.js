@@ -3,12 +3,14 @@ import Vuex from "vuex"
 
 Vue.use(Vuex);
 import exams from "./modules/module.exams";
-import user from "./modules/module.user";
+import users from "./modules/module.user";
+import lessons from "./modules/module.lessons";
 
 const store = new Vuex.Store({
     modules: {
         exams,
-        user
+        users,
+        lessons
     }
 });
 

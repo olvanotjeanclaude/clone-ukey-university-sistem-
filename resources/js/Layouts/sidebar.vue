@@ -2,6 +2,10 @@
   <div class="sidebar bg-light">
     <ul class="list-group list-unstyled text-capitalize">
       <li class="list-group-item">
+        <router-link to="/"> <i class="mr-2 fa fa-home"></i>panel </router-link>
+      </li>
+
+      <li class="list-group-item">
         <router-link :to="`/lesson/${lessonId}/content`">
           <i class="mr-2 fa fa-folder-open"></i>
           content of the lesson
@@ -16,7 +20,7 @@
       </li>
 
       <li class="list-group-item">
-        <router-link :to="`/lesson/${lessonId}/group`">
+        <router-link :to="`/lesson/${lessonId}/groups`">
           <i class="mr-2 fa fa-users"></i>
           groups
         </router-link>
@@ -57,10 +61,6 @@
       </li>
 
       -->
-
-      <li class="list-group-item">
-        <router-link to="/"> <i class="mr-2 fa fa-home"></i>panel </router-link>
-      </li>
     </ul>
   </div>
 </template>
