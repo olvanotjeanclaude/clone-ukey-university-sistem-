@@ -31,6 +31,7 @@ export default {
     return {
       sidebar: false,
       lessonId: null,
+      //  isLessonsList:
     };
   },
 

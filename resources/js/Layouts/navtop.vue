@@ -15,7 +15,7 @@
       <div class="col-lg-9 top-right">
         <ul class="list-unstyled d-flex float-right mt-2">
           <li>
-            <span><i class="mr-3 fa fa-bars"></i></span>
+            <!--<span><i class="mr-3 fa fa-bars"></i></span>-->
           </li>
           <li><i class="mr-3 fa fa-check-circle"></i></li>
           <li class="text-uppercase">

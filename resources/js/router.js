@@ -8,7 +8,8 @@ import ExempleComponent from "../js/Mode_test/ExampleComponent.vue";
 import Panel from "../js/components/Dashboard/Panel.vue";
 import LessonInformation from "../js/components/Lessons/LessonInformation.vue";
 import lessonDetail from "../js/components/Lessons/LessonInformation.vue";
-import LessonContent from "../js/components/Lessons/LessonContent.vue"
+import LessonContent from "../js/components/Lessons/LessonContent.vue";
+import LessonList from "./components/Lessons/LessonList.vue";
 
 const studentList = () =>
     import ("../js/components/Students/StudentList.vue");
@@ -32,6 +33,7 @@ import CourseDetailComponent from "./components/Course/CourseDetailComponent.vue
 const routes = [
     { path: "/", component: Panel },
     { path: "/test", component: ExempleComponent },
+    { path: "/lessons", component: LessonList },
     {
         path: "/lesson/:lessonId",
         component: MainPage,
@@ -39,9 +41,9 @@ const routes = [
             { path: "/lesson/:lessonId/student/list", component: studentList },
             { path: "/lesson/:lessonId/ders-bilgileri", component: LessonInformation },
             { path: "/lesson/:lessonId/lessonDetail", component: lessonDetail },
-            { path: "/lesson/:lessonId/content", component: LessonContent },
+            { path: "/lesson/:lessonId/content", name: "lessonContent", component: LessonContent },
             { path: "/lesson/:lessonId/groups", component: Groups, },
-            { path: "/lesson/:lessonId/group/group-detail", component: GroupDetail },
+            { path: "/lesson/:lessonId/groups/group-detail", component: GroupDetail },
             { path: "/lesson/:lessonId/exercises", component: Exercice },
             {
                 path: "/lesson/:lessonId/exercises/detail",
@@ -52,7 +54,7 @@ const routes = [
             { path: "/lesson/:lessonId/exams/result", name: "examResult", component: ExamResult },
             { path: "/lesson/:lessonId/exams/start", name: "startingExam", component: ExamStartComponent },
             { path: "/lesson/:lessonId/coursesMaterials", name: "coursMaterials", component: Courses },
-            { path: "/lesson/:lessonId/coursesDetail", name: "coursDetail", component: CourseDetailComponent },
+            { path: "/lesson/:lessonId/content/coursesDetail", name: "coursDetail", component: CourseDetailComponent },
             { path: "/lesson/:lessonId/coursesMaterials/courseDetail", component: CourseDetail },
         ]
     },

@@ -2,21 +2,21 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb mb-0 text-capitalize">
       <li class="breadcrumb-item" v-if="allLessons">
-        <a href="#">list of lessons</a>
+        <a href="">list of lessons</a>
       </li>
 
       <li class="breadcrumb-item" v-if="lessonName">
-        <a href="#"> {{ getLessonName(lessonId) }} </a>
+        <a href="#" @click="goDetail"> {{ getLessonName(lessonId) }} </a>
       </li>
 
       <li class="breadcrumb-item" v-if="section">
-        <a href="#"> {{ sec }} </a>
+        <a href="#" @click="goPrev(link)"> {{ sec }} </a>
       </li>
 
       <li class="breadcrumb-item" v-if="detail">
         <a href="#"> {{ textDetail }} </a>
       </li>
-      <li class="breadcrumb-item active d-none">id : {{ lessonId }}</li>
+      <li class="breadcrumb-item d-none">id : {{ lessonId }}</li>
     </ol>
   </nav>
 </template>
@@ -34,17 +34,30 @@ export default {
       lessonId: this.$route.params.lessonId,
       textDetail: "detail",
       sec: "section",
+      link: null,
     };
   },
   watch: {
     $route(to) {
       to.params.lessonId;
-      var url = to.path;
-      this.sec = this.getSectionActive(url);
+      this.link = to.path;
+      this.sec = this.getSectionActive(this.link);
     },
   },
 
   methods: {
+    goPrev(currentLink) {
+      if (this.detail) {
+        if (currentLink) {
+          var linkFragment = currentLink.split("/")[3];
+          var prev = `/lesson/${this.lessonId}/${linkFragment}`;
+          this.$router.push(prev);
+        }
+        return true;
+      }
+      return false;
+    },
+
     getSectionActive(url) {
       var lessonId = this.lessonId;
 
@@ -56,7 +69,6 @@ export default {
         var IndexDetail = activeSection.indexOf("/");
 
         if (IndexDetail != -1) {
-          // console.log(activeSection);
           activeSection = activeSection.slice(0, IndexDetail);
           switch (activeSection) {
             case "exams/detail":
@@ -86,6 +98,9 @@ export default {
       }
 
       return "section unvailable";
+    },
+    goDetail() {
+      this.$router.push({ name: "lessonContent", params: { lessonId: this.lessonId } });
     },
   },
 

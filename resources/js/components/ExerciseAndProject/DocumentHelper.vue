@@ -16,7 +16,7 @@
         <tbody class="table-content bg-light">
           <tr>
             <td class="item">
-              <router-link :to="`/lesson/${lessonId}/coursesDetail`">
+              <router-link :to="`/lesson/${lessonId}/content/coursesDetail`">
                 <i class="fa fa-search"></i>
               </router-link>
             </td>

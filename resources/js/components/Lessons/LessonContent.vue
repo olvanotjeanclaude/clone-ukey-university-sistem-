@@ -18,21 +18,13 @@
         <tbody v-else>
           <tr v-for="lesson in lessonContent" :key="lesson.id">
             <td class="item text-center">
-              <router-link :to="`/lesson/${lessonId}/coursesDetail`">
+              <router-link :to="`/lesson/${lessonId}/content/coursesDetail`">
                 <i class="fa fa-search"></i>
               </router-link>
             </td>
             <td class="item text-center">{{ lesson.week }}</td>
             <td class="item">{{ lesson.theory }}</td>
             <td class="item">{{ lesson.practice }}</td>
-          </tr>
-          <tr class="d-none">
-            <td>
-              <a href=""><i class="fa fa-search"></i></a>
-            </td>
-            <td>1</td>
-            <td class="item">Otto</td>
-            <td class="item">@mdo</td>
           </tr>
         </tbody>
       </table>
@@ -61,7 +53,6 @@ export default {
       if (this.lessonId !== undefined) {
         let fullUrl =
           window.location.origin + "/api/lesson/" + this.lessonId + "/content";
-        console.log(fullUrl);
         axios
           .get(fullUrl)
           .then((response) => {
